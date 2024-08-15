@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Cadastro de Vagas</title>
+</head>
+<body class="bg-white h-screen  ">
+
+
+<nav class="bg-green-900 p-2 ">
+
+
+
+        <div class="relative flex h-16 items-center justify-between text-white px-2 sm:px-6 lg:px-8">
+            <div class="space-x-4">
+
+        <!-- item selecionado  -->
+        <a href="/empresa/vagas" class="text-white text-lg font-semibold
+bg-green-700 rounded-md px-3 py-2
+">
+            Cadastro de Vagas
+        </a>
+        <a href="/empresa/vagas/lista" class="text-white text-lg font-semibold">
+            Listagem de Vagas
+        </a>
+
+            </div>
+        <h1 class="text-white text-3xl">
+            Gestão de Vagas
+        </h1>
+
+
+        <a href="/empresa/logout" class="text-white text-lg font-semibold">
+            Logout
+        </a>
+    </div>
+
+
+</nav>
+
+
+<div class="flex-grow flex items-center justify-center py-5">
+    <div class="bg-gray-200 rounded-lg p-8 w-4/5 max-w-xl shadow-lg">
+        <h1 class="text-gray-800 text-3xl mb-6 flex justify-center">Cadastro de vagas</h1>
+
+
+        <form th:action="@{/empresa/vagas}" method="post"
+              th:object="${vagas}"
+              class="space-y-4">
+
+            <div class="flex flex-row items-center">
+                <label for="" class="text-gray-700 font-bold   w-40 ">Descrição da Vaga:</label>
+
+                <input type="text" name="description"
+                       th:field="*{description}"
+
+                       class="bg-gray-100 text-gray-800 text-lg rounded w-2/3 p-2 focus: outline-none focus:ring-blue-600 focus:ring-2"
+                       placeholder="Desenvolvedor Full Stack"
+
+                />
+            </div>
+            <div class="flex flex-row items-center">
+                <label for="" class="text-gray-700 font-bold  w-40">Nível da Vaga:</label>
+
+                <input type="text" name="nivelDaVaga"
+                       th:field="*{nivelDaVaga}"
+
+                       class="bg-gray-100 text-gray-800 text-lg rounded w-2/3 p-2 focus: outline-none focus:ring-blue-600 focus:ring-2"
+                       placeholder="Pleno"
+
+                />
+            </div>
+
+            <div class="flex flex-row items-center">
+                <label for="" class="text-gray-700 font-bold  w-40 ">Beneficios da Vaga:</label>
+
+                <input type="text" name="beneficio"
+                       th:field="*{beneficio}"
+                       class="bg-gray-100 text-gray-800 text-lg rounded w-2/3  p-2 focus: outline-none focus:ring-blue-600 focus:ring-2"
+                       placeholder="Plano de Saúde"
+
+                />
+            </div>
+            <div class="flex flex-row items-center">
+                <label for="" class="text-gray-700 font-bold  w-40 ">Modalidade da Vaga:</label>
+
+                <input type="text" name="modalidadeVaga"
+                       th:field="*{modalidadeVaga}"
+                       class="bg-gray-100 text-gray-800 text-lg rounded w-2/3  p-2 focus: outline-none focus:ring-blue-600 focus:ring-2"
+                       placeholder="Remota"
+
+                />
+            </div>
+
+            <div class="flex flex-row items-center">
+                <label for="" class="text-gray-700 font-bold  w-40 ">Requisitos da Vaga:</label>
+
+                <input type="text" name="requisitos"
+                       th:field="*{requisitos}"
+                       class="bg-gray-100 text-gray-800 text-lg rounded w-2/3  p-2 focus: outline-none focus:ring-blue-600 focus:ring-2"
+                       placeholder="Inglês Básico"
+
+                />
+            </div>
+
+            <p class="text-red-500" th:if="${error_message}" th:text="${error_message}"></p>
+
+
+            <button class="bg-green-900 p-4 w-full rounded text-white hover:bg-green-700">Cadastrar</button>
+
+
+        </form>
+
+
+    </div>
+</div>
+
+
+</body>
+
+
+</html>

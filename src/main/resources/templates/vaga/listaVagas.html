@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title> Lista de Vagas Empresa</title>
+</head>
+<body class="bg-white h-screen  ">
+
+<nav class=" bg-green-900 p-2">
+
+        <div class="relative flex h-16 items-center justify-between text-white
+
+         text-lg font-semibold px-2 sm:px-6 lg:px-8">
+            <div class="space-x-4">
+
+                <!-- item selecionado  -->
+                <a href="/empresa/vagas">
+                    Cadastro de Vagas
+                </a>
+                <a href="/empresa/vagas/lista" class="bg-green-700 rounded-md px-3 py-2">
+                    Listagem de Vagas
+                </a>
+
+
+            </div>
+            <h1 class="text-white text-3xl">
+                Gestão de Vagas
+            </h1>
+            <a href="/empresa/logout" class="text-white text-lg font-semibold">
+                Logout
+            </a>
+
+
+        </div>
+</nav>
+
+<p class="text-center text-3xl pt-5">Listagem de Vagas da Empresa</p>
+<div class="flex-grow flex justify-center pt-4">
+<div class="pb-3 w-9/12 max-w-full">
+
+    <table class="w-full">
+<thead>
+    <tr class="bg-green-300">
+<th  class="text-center py-2 px-4">Descrição</th>
+<th  class="text-center py-2 px-4">Benéficio</th>
+<th  class="text-center py-2 px-4">Nivel</th>
+<th class="text-center py-2 px-4" >Modalidade</th>
+        <th class="text-center py-2 px-4" >Requisitos</th>
+
+
+    </tr>
+
+</thead>
+
+<tbody>
+<!--listando as vagas-->
+
+
+
+    <tr th:each="vagas:${vagas}">
+
+
+        <td class="border px-4 py-2  text-center" th:text="${vagas.description}"></td>
+        <td class="border px-4 py-2 text-center"th:text="${vagas.nivelDaVaga}"></td>
+        <td class="border px-4 py-2 text-center"th:text="${vagas.beneficio}"></td>
+        <td class="border px-4 py-2 text-center"th:text="${vagas.modalidadeVaga}"></td>
+        <td class="border px-4 py-2 text-center"th:text="${vagas.requisitos}"></td>
+
+    </tr>
+</tbody>
+
+    </table>
+</div>
+
+
+</div>
+
+</body>
+</html>

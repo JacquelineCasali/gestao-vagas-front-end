@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Cadastro do Candidato</title>
+</head>
+<body class="bg-green-950 h-screen ">
+       <div class="text-white text-4xl flex flex-col items-center pt-4">
+              Gestão de Vagas
+          </div>
+
+<form   id="submitForm"  method="post" th:action="@{/candidato/cadastro}"
+       th:object="${candidato}"
+
+       class="gap-10
+       items-center flex justify-center">
+
+  
+
+        <div class=" space-y-4 bg-white rounded-md p-6 mt-2">
+
+            <p class=" text-black text-2xl flex justify-center font-semibold">Cadastro Candidato</p>
+          
+           
+          
+            <input type="text" name="name"
+                   th:field="*{name}"
+                   class="bg-gray-100 text-gray-900 text-xd rounded w-full block p-3 focus: outline-none focus:ring-blue-600 focus:ring-2"
+                   placeholder="Nome Completo do Usuário"
+            />
+
+            <div class="flex flex-row gap-10">
+            <input type="text" name="username"
+                   th:field="*{username}"
+                   class="bg-gray-100 text-gray-900 text-xd rounded w-96 block p-3 focus: outline-none focus:ring-blue-600 focus:ring-2"
+                   placeholder="Digite seu usuário"
+            />
+  
+       
+            <input type="email" name="email"
+                   th:field="*{email}"
+                   class="bg-gray-100 text-gray-900 text-xd rounded w-96 block p-3 focus: outline-none focus:ring-blue-600 focus:ring-2"
+                   placeholder="Digite seu email"
+            />
+       </div>
+            <div class="flex flex-row gap-10">
+            <input type="password" name="password" id="password"
+
+                   th:field="*{password}"
+                   class="bg-gray-100 text-gray-900 text-xd rounded w-96 block p-3 focus: outline-none focus:ring-blue-600 focus:ring-2"
+                   placeholder="Crie sua Senha"
+            />
+      
+            <input type="password" name="confirmPassword" id ="confirmPassword"
+                   class="bg-gray-100 text-gray-900 text-xd rounded w-96 block p-3 focus: outline-none focus:ring-blue-600 focus:ring-2"
+                   placeholder="Confirme sua senha"
+            />
+       </div>
+
+            <textarea
+                    name="description"
+                    th:field="*{description}"
+                    class="bg-gray-100 text-gray-900 text-xd rounded w-full block p-3 focus: outline-none focus:ring-blue-600 focus:ring-2"
+                    placeholder="Digite uma descrição"
+            ></textarea>
+
+            <p class="text-red-400"th:if="${error_message}" th:text="${error_message}"></p>
+
+
+            <!--hidden desabilita -->
+            <p class="text-red-700 hidden" id="password_error" >As Senhas não confere</p>
+
+
+            <button class="bg-green-900 p-4 w-full rounded text-white font-semibold text-xl hover:bg-green-700">Cadastrar</button>
+            <p class="mt-3 text-white">
+              Já tem conta?
+            <a href="/candidato/login"
+               class=" ml-60 text-center text-green-700 underline underline-offset-2 font-bold hover:text-green-600"> Faça Login aqui</a>
+      
+              </p>
+              </div>
+
+
+</form>
+
+</body>
+
+<script>
+<!--    validando as senhas -->
+    document.getElementById("submitForm").addEventListener("submit",(event)=>{
+        var password=document.getElementById("password").value;
+        var confirmpassword=document.getElementById("confirmPassword").value;
+
+        if(password!==confirmpassword){
+            document.getElementById("password_error").classList.remove("hidden")
+            event.preventDefault();
+        }
+    })
+</script>
+
+
+</html>
